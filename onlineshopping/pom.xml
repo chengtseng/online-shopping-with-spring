@@ -7,11 +7,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>onlineshopping Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
 		<javaee.version>7.0</javaee.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 	</properties>
+
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -25,6 +26,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+		</dependency>
+
+		<!-- link back end project -->
+		<dependency>
+			<groupId>net.wei</groupId>
+			<artifactId>shoppingbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 
