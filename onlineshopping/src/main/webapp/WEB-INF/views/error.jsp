@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
 <!--  include the JSTL Core library -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,7 +8,6 @@
 <!-- static resource boostrap -->
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
-<spring:url var="images" value="/resources/images" />
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
@@ -35,9 +35,6 @@
 <!-- CSS theme -->
 <link href="${css}/bootswap-darkly-theme.css" rel="stylesheet">
 
-<!-- Datatable CSS theme -->
-<link href="${css}/bootTables.bootstrap.css" rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href="${css}/myapp.css" rel="stylesheet">
 
@@ -51,55 +48,33 @@
 
 <body>
 	<div class="wrapper">
-		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
+		<nav class="navbar navbar-inverse navebar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-breand" href="${contextRoot}/home">Back to
+						Home</a>
+				</div>
+			</div>
+		</nav>
 
 		<div class="content">
-			<!-- Page Content -->
-			<!-- Home JSP -->
-			<c:if test="${userClickHome == true}">
-				<%@include file="./home.jsp"%>
-			</c:if>
-
-			<c:if test="${userClickAbout == true}">
-				<%@include file="./about.jsp"%>
-			</c:if>
-
-			<c:if test="${userClickContact == true}">
-				<%@include file="./contact.jsp"%>
-			</c:if>
-			
-			<c:if test="${userClickCategoryProducts == true or userClickAllProducts == true}">
-				<%@include file="./listProduct.jsp"%>
-			</c:if>
-			
-			<c:if test="${userClickShowProduct == true}">
-				<%@include file="./singleProduct.jsp"%>
-			</c:if>
-			
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="jumbotron">
+							<h1>${errorTitle}</h1>
+							<hr/>
+							<blockquote>
+								${errorDescription}
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
-
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-
-		<!-- jQuery -->
-		<script src="${js}/jquery.js" type="text/javascript"></script>
-
-		<!-- Bootstrap Core JavaScript -->
-		<script src="${js}/bootstrap.min.js"></script>		
-		
-		<!-- Data table plugin -->
-		<script src ="${js}/jquery.dataTables.js" type="text/javascript"></script>
-		
-		<!-- Datatable.js -->
-		<script src="${js}/dataTables.bootstrap.js" type="text/javascript"></script>
-		
-		<!-- self coded js -->
-		<script src="${js}/myapp.js"></script>
-
 	</div>
-
 </body>
 
 </html>
