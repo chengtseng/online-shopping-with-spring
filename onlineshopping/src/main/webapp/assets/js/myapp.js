@@ -10,6 +10,9 @@ $(function(){
 		case 'All Products':
 			$('#listProducts').addClass('active');
 			break;
+		case 'Manage Products':
+			$('#manageProducts').addClass('active');
+			break;
 		case 'Home':break;
 		default: 
 			$('#listProducts').addClass('active');
@@ -21,14 +24,13 @@ $(function(){
 //code for jquery data table
 	var $table = $('#productListTable');
 	if($table.length){
+		
 		jsonUrl='';
 		if(window.categoryId == ''){
 			jsonUrl = window.contextRoot + '/json/data/all/products';
 		}else{
 			jsonUrl = window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
-		}
-		
-		
+		}		
 
 		$table.DataTable({
 			lengthMenu:[[3,5,10,-1],['3 Records', '5 Records', '10 Records','ALL']],
@@ -75,9 +77,7 @@ $(function(){
 			         				str += '<a href="javascript.void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 			         			}else{
 			         				str += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-			         			}
-			         			
-			         			
+			         			}        			
 			         					         			
 			         			return str;			         			
 			         		}
@@ -87,3 +87,9 @@ $(function(){
 		
 	}
 	
+	var $alert = $('.alert');
+	if($alert.length){
+		setTimeout(function(){
+			$alert.fadeOut('slow');
+		},3000)
+	}
