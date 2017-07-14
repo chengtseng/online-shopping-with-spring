@@ -14,10 +14,8 @@
 			</ol>
 		</div>
 	</div>
-</div>
-
-
-<div class="row">
+	
+	<div class="row">
 	<!-- display the product image -->
 	<div class="col-xs-12 col-sm-4">
 		<div class="thumbnail">
@@ -58,3 +56,7 @@
 		<a href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 	</div>
 </div>
+	
+</div>
+
+

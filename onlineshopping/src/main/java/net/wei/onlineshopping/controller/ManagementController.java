@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import net.wei.onlineshopping.util.FileUploadUtility;
+import net.wei.onlineshopping.validator.ProductValidator;
 import net.wei.shoppingbackend.dao.CategoryDAO;
 import net.wei.shoppingbackend.dao.ProductDAO;
 import net.wei.shoppingbackend.dto.Category;
@@ -14,6 +15,7 @@ import net.wei.shoppingbackend.dto.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,13 +33,13 @@ public class ManagementController {
 	private ProductDAO productDAO;
 	
 	@RequestMapping(value="/products", method=RequestMethod.GET)
-	public ModelAndView showManageProducts(@RequestParam(name="operation", required = false)String operation){
+	public ModelAndView showManageProducts(@RequestParam(name="operation", required = false)String operation, ModelMap model){
 		
 		ModelAndView mv = new ModelAndView("page");
 		
 		mv.addObject("userClickManageProducts", true);
 		mv.addObject("title", "Manage Products");
-		
+		System.out.print((List)model.get("categories"));
 		//product to page
 		Product newProduct = new Product();
 		newProduct.setSupplierId(1);
@@ -56,18 +58,26 @@ public class ManagementController {
 										  BindingResult results, 
 										  Model model, 					
 										  HttpServletRequest request){
-		//check if there are any error
+		//Custom Spring Validator
+		new ProductValidator().validate(modifiedProduct, results);
+		
+		//Check if there are any error (hibernate validator) + Spring(the result return from the last command)
 		if(results.hasErrors()){			
+			//another way to return a page with model
+			//need to set model to render the page. Cannot only do redirect.
 			model.addAttribute("userClickManageProducts", true);
 			
 			model.addAttribute("title", "Manage Products");
 			
+			model.addAttribute("message", "Validation fail, please check the error message below.");
+			
 			return "page";
 		}
 		
+		//no error, add product to database
 		productDAO.add(modifiedProduct);
 		
-		//if some file available
+		//if image file available, upload image to both project and server directory
 		if(!modifiedProduct.getFile().getOriginalFilename().equals("")){
 			FileUploadUtility.uploadFile(request, modifiedProduct.getFile(), modifiedProduct.getCode());
 		}
@@ -76,6 +86,7 @@ public class ManagementController {
 		return "redirect:/manage/products?operation=product";
 	}
 	 
+	//display category list
 	@ModelAttribute("categories")
 	public List<Category> getCategories(){
 		return categoryDao.list();

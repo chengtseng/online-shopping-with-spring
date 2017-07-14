@@ -99,7 +99,10 @@
 		<!-- Datatable.js -->
 		<script src="${js}/dataTables.bootstrap.js" type="text/javascript"></script>
 		
-		<!-- self coded js -->
+		<!-- BootBox.js : for dialogue box-->
+		<script src="${js}/bootbox.min.js" type="text/javascript"></script>
+		
+		<!-- self coded js : last-->
 		<script src="${js}/myapp.js"></script>
 
 	</div>

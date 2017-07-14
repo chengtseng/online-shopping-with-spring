@@ -13,7 +13,7 @@ public class FileUploadUtility {
 	
 	public static void uploadFile(HttpServletRequest request, MultipartFile file, String code) {
 		realPath = request.getSession().getServletContext().getRealPath("/assets/images/");
-		
+		System.out.print(realPath);
 		//to make sure all the directory exists. please create the directories
 		if(!new File(absolutePath).exists()){
 			new File(absolutePath).mkdirs(); 

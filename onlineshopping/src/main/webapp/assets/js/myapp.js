@@ -1,6 +1,5 @@
 $(function(){		
-	switch(menu){
-		
+	switch(menu){		
 		case 'About':
 			$('#about').addClass('active');
 			break;
@@ -19,12 +18,11 @@ $(function(){
 			$('#a_'+menu).addClass('active');
 			break;
 	}
-});
-
-//code for jquery data table
+	
+	//code for jquery data table
 	var $table = $('#productListTable');
-	if($table.length){
-		
+	//alert(window.contextRoot);
+	if($table.length){		
 		jsonUrl='';
 		if(window.categoryId == ''){
 			jsonUrl = window.contextRoot + '/json/data/all/products';
@@ -37,13 +35,14 @@ $(function(){
 			pageLength: 5,
 			ajax:{
 				url: jsonUrl,
-				dataSrc:''				
+				dataSrc:''//??				
 			},
 			columns:[
 			         	{
 			         		data: 'code',
 			         		mRender: function(data, type, row){
 			         			return '<img src="' + window.contextRoot+'/resources/images/' + data +'.jpg" class="datatableImg"/>';
+			         			
 			         		}			         		
 			         	},
 			         	{
@@ -93,3 +92,48 @@ $(function(){
 			$alert.fadeOut('slow');
 		},3000)
 	}
+	
+	
+	$('.switch input[type="checkbox"]').on('change', function(){
+		//alert("change!!");
+		
+		//get the check box
+		var checkbox = $(this);
+		
+		//get the property "checked"
+		var checked = checkbox.prop('checked');
+		
+		//if checked become true after the change event : false after change event 
+		var dMsg = (checked) ? 'Do you want to activate the product' : 'Do you want to deactivate the product';
+		
+		//id of the product
+		var value = checkbox.prop('value');
+		
+		//setup dialogue box detail
+		bootbox.confirm({
+			size: 'medium', 
+			title: 'Product Activation & Deactivation',
+			//if ok in clicked
+			callback: function(confirmed){
+				if(confirmed){
+					console.log(value);
+					bootbox.alert(
+						{
+							size: 'medium',
+							tile: 'Information',
+							message: 'You are going to perform operation on product.'						
+						}
+					);
+				}
+				//if ok is not clicked
+				else{
+					checkbox.prop('checked', !checked);
+				}
+			},
+			message: dMsg			
+		});
+		
+	});
+	
+});
+
