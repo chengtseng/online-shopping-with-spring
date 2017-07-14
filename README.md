@@ -2,6 +2,7 @@
 Personal practice and review on Spring MVC.
 
 Technology : spring MVC + hibernate + Maven + Bootstrap + Jsp
+
 Feature: Hibernate/Spring input validation, jsp jstl
 
 Time Line: 
