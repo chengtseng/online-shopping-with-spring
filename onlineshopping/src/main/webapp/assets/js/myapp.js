@@ -209,7 +209,7 @@ $(function(){
 		         								url: activationURL,		         								
 		         								success: function(data){
 		         									bootbox.alert(
-	    		         								{
+	    		         								{ 
 	    		         									size: 'medium',
 	    		         									tile: 'Information',
 	    		         									message: data						
