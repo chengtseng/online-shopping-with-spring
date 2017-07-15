@@ -1,7 +1,15 @@
 # online-shopping-with-spring
 Personal practice and review on Spring MVC.
+
 Technology : spring MVC + hibernate + Maven + Bootstrap + Jsp
-Feature: Hibernate/Spring input validation, jsp jstl
+
+Other: Hibernate/Spring input validation, jsp jstl
+
+I am responsible for:
+1. Page layout using bootstrap.
+2. Admin page for product management.
+3. Data form valudation.
+4. Normal user login.
 
 Time Line: 
 
