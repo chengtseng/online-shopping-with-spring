@@ -75,16 +75,17 @@
 									placeholder="Quantity Available" class="form-control" />
 							</div>
 						</div>
-						
+
 						<!-- file element for image upload -->
 						<div class="form-group">
-							<label class="control-label col-md-4" for="file">Select an Image</label>
+							<label class="control-label col-md-4" for="file">Select
+								an Image</label>
 							<div class="col-md-8">
-								<sf:input type="file" path="file" id="file"	class="form-control" />	
-								<sf:errors path="file" cssClass="help-block" element="em" />							
+								<sf:input type="file" path="file" id="file" class="form-control" />
+								<sf:errors path="file" cssClass="help-block" element="em" />
 							</div>
 						</div>
-						
+
 						<!-- show the browse input for file upload -->
 						<div class="form-group">
 							<label class="control-label col-md-4" for="category">Category</label>
@@ -124,114 +125,46 @@
 	</div>
 
 	<div class="row">
-		
+
 		<div class="col-xs-12">
 			<h3>Products in store</h3>
 		</div>
-		
+
 		<div class="col-xs-12">
-			<div style="overflow:auto">
-				
-				<table id="img adminProductsTable myImg" class="table table-striped table-bordered">
+			<div style="overflow: auto">
+
+				<table id="adminProductsTable" class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
-							<th>Quantity</th>
+							<th>Brand</th>							
 							<th>Unit Price</th>
-							<th>Active</th>
-							<th>Edit</th>						
-						</tr>					
-					</thead>
-					
-					<tbody>
-						<tr>
-							<td>20</td>
-							<td>
-								<!-- map /resource/ to /assets in dispatcher -->
-								<img class="adminDataTableImg" src="${contextRoot}/resources/images/PRDD57092CD11.jpg" alt="Sky drum"/>								
-							</td>
-							
-							<td></td>
-							<td></td>
-							<td></td>
-							
-							<td>
-								<!-- toggle switch -->
-								<label class="switch">
-									<input type="checkbox" checked="checked" value="20"/>
-									<div class="slider"></div>
-								</label>
-							</td>
-							
-							
-							<td>
-								<!-- edit button -->
-								<a href="${contextRoot}/manage/4/product" class="btn btn-warning">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</a>
-							</td>						
-						</tr>
-						
-							<tr>
-							<th>Id</th>
-							<th>&#160;</th>
-							<th>Name</th>
 							<th>Quantity</th>
-							<th>Unit Price</th>
 							<th>Active</th>
-							<th>Edit</th>						
-						</tr>					
-					</thead>
-					
-					<tbody>
-						<tr>
-							<td>20</td>
-							<td>
-								<!-- map /resource/ to /assets in dispatcher -->
-								<img class="adminDataTableImg" src="${contextRoot}/resources/images/PRDD57092CD11.jpg" alt="Sky drum"/>								
-							</td>
-							
-							<td></td>
-							<td></td>
-							<td></td>
-							
-							<td>
-								<!-- toggle switch -->
-								<label class="switch">
-									<input type="checkbox" value="20"/>
-									<div class="slider"></div>
-								</label>
-							</td>
-							<td>
-								<a href="${contextRoot}/manage/4/product" class="btn btn-warning">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</a>
-							</td>						
+							<th>Edit</th>
 						</tr>
-						
-						
-												
-					</tbody>
-					
+					</thead>				
+
 					<tfoot>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
-							<th>Quantity</th>
+							<th>Brand</th>							
 							<th>Unit Price</th>
+							<th>Quantity</th>
 							<th>Active</th>
 							<th>Edit</th>
 						</tr>
-					
+
 					</tfoot>
-					
+
 				</table>
-			
-			
+
+
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>

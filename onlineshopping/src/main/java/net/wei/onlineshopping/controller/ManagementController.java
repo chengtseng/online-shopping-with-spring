@@ -18,9 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -84,6 +86,21 @@ public class ManagementController {
 		
 		//redirect
 		return "redirect:/manage/products?operation=product";
+	}
+	
+	@RequestMapping(value="/product/{id}/activation", method=RequestMethod.POST)
+	@ResponseBody
+	public String handleProductActivation(@PathVariable("id") int id){
+		Product product =  productDAO.get(id);
+		
+		if(product != null){
+			boolean isActive = product.isActive();
+			product.setActive(!isActive);
+			productDAO.update(product);
+		}
+		String msg = product.isActive() ? " is activated" : " is deactivated"; 
+		
+		return "Product Name: " + product.getName()+" Product Id: " +id + msg;
 	}
 	 
 	//display category list

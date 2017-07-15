@@ -2,9 +2,7 @@ package net.wei.onlineshopping.util;
 
 import java.io.File;
 import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtility {
@@ -24,7 +22,7 @@ public class FileUploadUtility {
 		}
 		
 		try{
-			//server uplead
+			//server upload
 			file.transferTo(new File(realPath + code + ".jpg"));
 			
 			//update to project
