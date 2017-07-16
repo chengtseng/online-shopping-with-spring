@@ -61,7 +61,13 @@ public class ManagementController {
 										  Model model, 					
 										  HttpServletRequest request){
 		//Custom Spring Validator
-		new ProductValidator().validate(modifiedProduct, results);
+		if(modifiedProduct.getId() == 0)
+			new ProductValidator().validate(modifiedProduct, results);
+		else{
+			if(!modifiedProduct.getFile().getOriginalFilename().equals(""))
+				new ProductValidator().validate(modifiedProduct, results);
+		}
+			
 		
 		//Check if there are any error (hibernate validator) + Spring(the result return from the last command)
 		if(results.hasErrors()){			
@@ -76,8 +82,11 @@ public class ManagementController {
 			return "page";
 		}
 		
-		//no error, add product to database
-		productDAO.add(modifiedProduct);
+		//no error, add product/update to database
+		if(modifiedProduct.getId() == 0)
+			productDAO.add(modifiedProduct);
+		else 
+			productDAO.update(modifiedProduct);
 		
 		//if image file available, upload image to both project and server directory
 		if(!modifiedProduct.getFile().getOriginalFilename().equals("")){
@@ -102,6 +111,23 @@ public class ManagementController {
 		
 		return "Product Name: " + product.getName()+" Product Id: " +id + msg;
 	}
+	
+	//show edit detail page
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView diplayEditProduct(@PathVariable("id")int id){
+		Product product = productDAO.get(id);		
+		ModelAndView mv = new ModelAndView("page");		
+		mv.addObject("userClickEditProducts", true);
+		mv.addObject("userClickManageProducts", true);
+		mv.addObject("title", "Edit Products");		
+		mv.addObject("product", product);	
+				
+		return mv;		
+	}
+	
+	
+	
 	 
 	//display category list
 	@ModelAttribute("categories")

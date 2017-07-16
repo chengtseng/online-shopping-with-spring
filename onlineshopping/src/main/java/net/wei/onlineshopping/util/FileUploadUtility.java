@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadUtility {
 	private static final String absolutePath = "E:\\workspace\\Projects\\online-shopping-with-spring\\onlineshopping\\src\\main\\webapp\\images\\";
 	private static String realPath = "";
-	
+	//E:\workspace\Projects\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\onlineshopping\assets\images
 	public static void uploadFile(HttpServletRequest request, MultipartFile file, String code) {
 		realPath = request.getSession().getServletContext().getRealPath("/assets/images/");
 		System.out.print(realPath);

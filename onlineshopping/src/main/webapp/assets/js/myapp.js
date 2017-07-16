@@ -84,7 +84,8 @@ $(function(){
 			         ]
 		});		
 	}
-	
+
+//	image upload confirm
 	var $alert = $('.alert');
 	if($alert.length){
 		setTimeout(function(){
@@ -156,7 +157,7 @@ $(function(){
 			         		}			         	
 			         	},
 			         	{
-			         		data: id,
+			         		data: 'id',
 			         		bSortable: false,
 			         		mRender: function(data, type, row){
 			         			var str = '';
@@ -232,6 +233,8 @@ $(function(){
 		         				});
 		         				
 		         			});
+		         			
+		         			//api.$(.swit)
 		         			
 		         			
 		         		}
