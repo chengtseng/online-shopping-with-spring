@@ -76,7 +76,7 @@
 							</div>
 						</div>
 
-						<!-- file element for image upload -->
+						<!-- element for image upload -->
 						<div class="form-group">
 							<label class="control-label col-md-4" for="file">Select
 								an Image</label>
