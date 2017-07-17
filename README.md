@@ -20,3 +20,6 @@ Goal: Review Spring MVC and wrap up my java framework journey.
 7/14
 Working on data table for admin to modify product in stock. Datatable for displaying product and edit product detail. 
 1. Integrate the bootstrap library BootBox.js for better user experience. (bootbox.comfirm, bootbox.alert) 
+
+7/15
+issue: show the existing product image name when upading product information.
