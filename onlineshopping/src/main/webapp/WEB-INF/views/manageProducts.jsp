@@ -186,7 +186,7 @@
 		</div>
 	</div>
 
-	<!-- Category dialogue -->
+	<!-- Category dialog -->
 	<div class="row">
 		<!-- button : data-target="#CategoryModal" -->
 		<div class="modal fade" id="CategoryModal" role="dialog" tabindex="-1">
@@ -200,7 +200,7 @@
 					</div>
 					<div class="modal-body">
 						<!-- Category form -->
-						<sf:form class="form-horizontal" modelAttribute="newCategory"
+						<sf:form id="categoryForm" class="form-horizontal" modelAttribute="newCategory"
 							action="${contextRoot}/manage/category" method="POST"
 							enctype="multipart/form-data">
 							

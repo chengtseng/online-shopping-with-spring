@@ -41,7 +41,7 @@ public class ManagementController {
 		
 		mv.addObject("userClickManageProducts", true);
 		mv.addObject("title", "Manage Products");
-		System.out.print((List)model.get("categoriess"));
+		System.out.print((List)model.get("categories"));
 		//product to page
 		Product newProduct = new Product();
 		newProduct.setSupplierId(1);

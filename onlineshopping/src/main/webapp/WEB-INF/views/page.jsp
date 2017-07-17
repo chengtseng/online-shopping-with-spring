@@ -102,6 +102,9 @@
 		<!-- BootBox.js : for dialogue box-->
 		<script src="${js}/bootbox.min.js" type="text/javascript"></script>
 		
+		<!-- JQuery validator-->
+		<script src="${js}/jquery.validate.js" type="text/javascript"></script>
+		
 		<!-- self coded js : last-->
 		<script src="${js}/myapp.js"></script>
 

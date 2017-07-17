@@ -242,6 +242,44 @@ $(function(){
 		});		
 	}
 //----------------------------------------------------------
+	//validate
+	var $categoryForm = $('#categoryForm');
+	if($categoryForm.length){
+		$categoryForm.validate({
+			rules:{
+				name:{
+					required: true,
+					minlength:2
+				},
+				
+				description:{
+					required: true					
+				}
+			},
+		
+		messages:{
+			
+			name:{
+				required :'please add a category name',
+				minlength : "not enough length"
+			},
+			description:{
+				required :'please provide description'		
+			}
+		},
+		
+		errorElement : 'em',
+		errorPlacement : function(error, element){
+			//add the class of help-block
+			error.addClass('help-block');
+			//add error message after input field
+			error.insertAfter(element);
+		}			
+		});
+	}
+	
+	
+//----------------------------------------------------------	
 	
 });
 
