@@ -48,11 +48,13 @@ public class ManagementController {
 		newProduct.setActive(true);
 		mv.addObject("product", newProduct);		
 		
-		if(operation != null && operation.equals("product")){
-			mv.addObject("message", "product submitted succesfully");
+		if(operation != null){
+			if(operation.equals("product"))mv.addObject("message", "product submitted succesfully");
+			else if(operation.equals("category")) mv.addObject("message", "category submitted succesfully");
 		}		
 		return mv;		
 	}
+	
 	//enrich model and request implicitly. see 15.3.2.3 Supported handler method arguments and return types
 	//http://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/mvc.html#mvc-ann-requestmapping-arguments
 	@RequestMapping(value="/products", method=RequestMethod.POST)
@@ -126,12 +128,22 @@ public class ManagementController {
 		return mv;		
 	}
 	
-	
-	
+	//new Category submission(return string to redirect)
+	@RequestMapping(value="/category", method=RequestMethod.POST)	
+	public String handleAddCategory(@ModelAttribute("newCategory") Category newCat){
+			
+		categoryDao.add(newCat);
+		return "redirect:/manage/products/?operation=category";		
+	}
 	 
 	//display category list
 	@ModelAttribute("categories")
 	public List<Category> getCategories(){
 		return categoryDao.list();
+	}
+	
+	@ModelAttribute("newCategory")
+	public Category getCategory(){
+		return new Category();
 	}
 }

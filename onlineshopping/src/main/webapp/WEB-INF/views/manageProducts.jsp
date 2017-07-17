@@ -81,7 +81,8 @@
 							<label class="control-label col-md-4" for="file">Select
 								an Image</label>
 							<div class="col-md-8">
-								<sf:input type="file" placeholder="DDD" path="file" id="file" class="form-control"  />
+								<sf:input type="file" placeholder="DDD" path="file" id="file"
+									class="form-control" />
 								<sf:errors path="file" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -96,6 +97,22 @@
 								</sf:select>
 							</div>
 						</div>
+
+						<c:if test="${product.id == 0 }">
+							<div class="form-group">
+								<br />
+								<div class="form-group">
+									<div class="col-md-offset-1 col-md-10">
+										<button type="button" data-toggle="modal"
+											data-target="#CategoryModal" class="btn btn-warning btn-xs">Add
+											Category</button>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+
+
 
 						<div class="form-group">
 							<div class="col-md-offset-1 col-md-10">
@@ -113,7 +130,7 @@
 						<sf:hidden path="supplierId" />
 						<sf:hidden path="active" />
 						<sf:hidden path="purchases" />
-						<sf:hidden path="views" />						
+						<sf:hidden path="views" />
 					</sf:form>
 
 				</div>
@@ -123,7 +140,7 @@
 		</div>
 
 	</div>
-
+	<!-- all products -->
 	<div class="row">
 
 		<div class="col-xs-12">
@@ -133,26 +150,27 @@
 		<div class="col-xs-12">
 			<div style="overflow: auto">
 
-				<table id="adminProductsTable" class="table table-striped table-bordered">
+				<table id="adminProductsTable"
+					class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
-							<th>Brand</th>							
+							<th>Brand</th>
 							<th>Unit Price</th>
 							<th>Quantity</th>
 							<th>Active</th>
 							<th>Edit</th>
 						</tr>
-					</thead>				
+					</thead>
 
 					<tfoot>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
-							<th>Brand</th>							
+							<th>Brand</th>
 							<th>Unit Price</th>
 							<th>Quantity</th>
 							<th>Active</th>
@@ -164,6 +182,54 @@
 				</table>
 
 
+			</div>
+		</div>
+	</div>
+
+	<!-- Category dialogue -->
+	<div class="row">
+		<!-- button : data-target="#CategoryModal" -->
+		<div class="modal fade" id="CategoryModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span>&times;</span>
+						</button>
+						<h4 class="modal-title">Add New Category</h4>
+					</div>
+					<div class="modal-body">
+						<!-- Category form -->
+						<sf:form class="form-horizontal" modelAttribute="newCategory"
+							action="${contextRoot}/manage/category" method="POST"
+							enctype="multipart/form-data">
+							
+							<div class="form-group">
+								<label for="c_name" class="control-label col-md-4">Category
+									Name</label>
+								<div class="col-md-8">
+									<sf:input type="text" id="c_name" path="name"
+										class="form-control" />
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="c_description" class="control-label col-md-4">Category
+									Description</label>
+								<div class="col-md-8">
+									<sf:textarea cols="" rows="5" id="c_description" path="description" class="form-control" />
+								</div>
+							</div>
+							
+							<div class="form-group">								
+								<div class="col-md-offset-4 col-md-8">
+									<input type="submit" value="Add the new Category" class="btn btn-primary" />
+								</div>
+							</div>
+							
+						</sf:form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
