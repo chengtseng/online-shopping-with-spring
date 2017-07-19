@@ -1,10 +1,13 @@
 package net.wei.shoppingbackend.daoimpl;
 
+
+
 import net.wei.shoppingbackend.dao.UserDAO;
 import net.wei.shoppingbackend.dto.Address;
 import net.wei.shoppingbackend.dto.Cart;
 import net.wei.shoppingbackend.dto.User;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -40,15 +43,33 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean addCart(Cart cart) {
+	public boolean updateCart(Cart cart) {
 		try{
-			sessionFactory.getCurrentSession().persist(cart);
+			sessionFactory.getCurrentSession().update(cart);
 			return true;
 		}catch(Exception ex){
 			ex.printStackTrace();
 			return false;
 		}
 		
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		String selectQuery = "FROM User WHERE email = :email";
+													    
+		try{
+
+			Query query = sessionFactory.getCurrentSession().createQuery(selectQuery).setParameter("email", email);
+			return (User)query.uniqueResult();
+			
+											  
+						
+		}catch(Exception ex){
+			ex.printStackTrace();
+			System.out.print("Problem when fetching user");
+			return null;
+		}		
 	}
 	
 

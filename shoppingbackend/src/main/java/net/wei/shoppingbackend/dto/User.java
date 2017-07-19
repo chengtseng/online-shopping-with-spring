@@ -1,10 +1,12 @@
 package net.wei.shoppingbackend.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -36,7 +38,20 @@ public class User {
 	
 	@Column(name="enabled")
 	private boolean enabled = true;
+	//---------------------------------------
+						//should be field name //cascade operations
+	@OneToOne(mappedBy="user", cascade=CascadeType.ALL)
+	//The meaning of CascadeType.ALL is that the persistence will propagate (cascade) all EntityManager operations 
+	//(PERSIST, REMOVE, REFRESH, MERGE, DETACH) to the relating entities.
+	private Cart cart;	
 	
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	//---------------------------------------
 	public int getId() {
 		return id;
 	}
