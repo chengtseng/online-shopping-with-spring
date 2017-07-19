@@ -1,6 +1,6 @@
 package net.wei.shoppingbackend.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import net.wei.shoppingbackend.dao.UserDAO;
 import net.wei.shoppingbackend.dto.Address;
 import net.wei.shoppingbackend.dto.Cart;
@@ -108,33 +108,96 @@ public class UserTestCase {
 //
 //	}
 	
+//	@Test
+//	public void testUpdateCart(){
+//		user = new User();
+//		user.setFirstName("test");
+//		user.setLastName("test");
+//		user.setEmail("test@gmail.com");
+//		user.setPhone("test");
+//		user.setRole("USER");
+//		user.setPassword("1111");	
+//		
+//		if (user.getRole().equals("USER")) {
+//			cart = new Cart();
+//			
+//			cart.setUser(user);
+//			
+//			user.setCart(cart);
+//			
+//			assertEquals("Fail to add user", true,
+//					userDAO.addUser(user));
+//		}
+//		
+//		User user = userDAO.getUserByEmail("test@gmail.com");
+//		Cart cart = user.getCart();
+//		cart.setGrandTotal(400);
+//		cart.setCartLines(2);
+//		assertEquals("Fail to update Cart", true, userDAO.updateCart(cart));
+//		
+//		
+//	}
+//	@Test
+//	public void testAddress(){
+//		//user
+//		user = new User();
+//		user.setFirstName("test");
+//		user.setLastName("test");
+//		user.setEmail("test@gmail.com");
+//		user.setPhone("test");
+//		user.setRole("USER");
+//		user.setPassword("1111");
+//		
+//		assertEquals("Fail to add user", true, userDAO.addUser(user));
+//		
+//		//create address
+//		address = new Address();
+//		address.setAddressLineOne("tet1_Billing");
+//		address.setAddressLineTwo("tet2_Billing");
+//		address.setCity("test_Billing");
+//		address.setState("test_Billing");
+//		address.setCountry("test_Billing");
+//		address.setZipCode("test_Billing");
+//		address.setBilling(true);
+//		
+//		address.setUser(user);
+//		
+//		assertEquals("Failed to add Billing Address", true, userDAO.addAddress(address));
+//		
+//		address = new Address();
+//		address.setAddressLineOne("tet1_Shipping");
+//		address.setAddressLineTwo("tet2_Shipping");
+//		address.setCity("test_Shipping");
+//		address.setState("test_Shipping");
+//		address.setCountry("test_Shipping");
+//		address.setZipCode("test_Shipping");
+//		address.setShipping(true);
+//		
+//		address.setUser(user);
+//		
+//		assertEquals("Failed to add Shipping Address", true, userDAO.addAddress(address));
+//	}
+	
+//	@Test
+//	public void testUpdateAddress(){
+//		User user = userDAO.getUserByEmail("test@gmail.com");
+//		address = new Address();
+//		address.setAddressLineOne("tet1_Shipping");
+//		address.setAddressLineTwo("tet2_Shipping");
+//		address.setCity("test_Address_Update");
+//		address.setState("test_Address_Update");
+//		address.setCountry("test_Shipping");
+//		address.setZipCode("test_Shipping");
+//		address.setShipping(true);		
+//		address.setUser(user);
+//		assertEquals("Fail to add another address to the user", true, userDAO.addAddress(address));	
+//		
+//	}
+	
 	@Test
-	public void testUpdateCart(){
-		user = new User();
-		user.setFirstName("test");
-		user.setLastName("test");
-		user.setEmail("test@gmail.com");
-		user.setPhone("test");
-		user.setRole("USER");
-		user.setPassword("1111");	
-		
-		if (user.getRole().equals("USER")) {
-			cart = new Cart();
-			
-			cart.setUser(user);
-			
-			user.setCart(cart);
-			
-			assertEquals("Fail to add user", true,
-					userDAO.addUser(user));
-		}
-		
+	public void testListOfAddressOfUser(){
 		User user = userDAO.getUserByEmail("test@gmail.com");
-		Cart cart = user.getCart();
-		cart.setGrandTotal(400);
-		cart.setCartLines(2);
-		assertEquals("Fail to update Cart", true, userDAO.updateCart(cart));
-		
+		assertEquals("Wrong result or error getting the list of address of the user", 2, userDAO.getListOfShippingAddress(user).size());
 		
 	}
 	

@@ -2,6 +2,8 @@ package net.wei.shoppingbackend.daoimpl;
 
 
 
+import java.util.List;
+
 import net.wei.shoppingbackend.dao.UserDAO;
 import net.wei.shoppingbackend.dto.Address;
 import net.wei.shoppingbackend.dto.Cart;
@@ -70,6 +72,38 @@ public class UserDAOImpl implements UserDAO {
 			System.out.print("Problem when fetching user");
 			return null;
 		}		
+	}
+
+	@Override
+	public Address getBillingAddress(User user) {		
+		String query = "FROM Address WHERE user = :userId AND billing=:isBilling";
+		
+		try{
+			return (Address)sessionFactory.getCurrentSession().createQuery(query)
+												.setParameter("userId", user.getId())
+												.setParameter("isBilling", true)
+												.uniqueResult();
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public List<Address> getListOfShippingAddress(User user) {
+		String query = "FROM Address WHERE user.id = :userId AND shipping = :isShipping";
+		
+		try{
+			//sessionFactory.getCurrentSession().createCriteria(List.class).add(Restrictions.ne("user", 1L)).list();
+			return sessionFactory.getCurrentSession().createQuery(query)
+												.setParameter("userId", user.getId())
+												.setParameter("isShipping", true)
+												.list();
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}
 	}
 	
 
