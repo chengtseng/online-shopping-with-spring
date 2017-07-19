@@ -199,6 +199,8 @@ public class UserTestCase {
 		User user = userDAO.getUserByEmail("test@gmail.com");
 		assertEquals("Wrong result or error getting the list of address of the user", 2, userDAO.getListOfShippingAddress(user).size());
 		
+		assertEquals("Wrong result or error getting info of billing address", "test_Billing", userDAO.getBillingAddress(user).getCity());
+		
 	}
 	
 }
