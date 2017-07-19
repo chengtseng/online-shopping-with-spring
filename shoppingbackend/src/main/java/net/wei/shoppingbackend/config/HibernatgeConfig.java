@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration//annotated that this class could configure a bean that would be manage by spring framework
 @ComponentScan(basePackages={"net.wei.shoppingbackend.dto"})
 @EnableTransactionManagement
-public class HibernateConfig {
+public class HibernatgeConfig {
 	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/onlineshopping";
 	private final static String DATABASE_DRIVER = "org.h2.Driver";
-	private final static String DATABASE_DIALECsT = "org.hibernate.dialect.H2Dialect";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
 	private final static String DATABASE_USERNAME = "root";
 	private final static String DATABASE_PASSWORD = "192847";
 	
@@ -50,6 +50,7 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");		
 		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("javax.persistence.validation.mode", "none");
 		return properties;
 	}
 	

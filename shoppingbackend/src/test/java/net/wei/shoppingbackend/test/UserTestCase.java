@@ -13,20 +13,28 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class UserTestCase {
 	private static AnnotationConfigApplicationContext context;
 	private static UserDAO userDAO;
-	private Cart cart= null;
+	private Cart cart = null;
 	private User user = null;
 	private Address address = null;
-	
+
 	@BeforeClass
-	public static void init(){
-		context = new AnnotationConfigApplicationContext();
-		context.scan("net.wei.shoppingbackend");
-		context.refresh();
-		userDAO = (UserDAO)context.getBean("userDAO");		
-	}
+	public static void init() {
 	
+		context = new AnnotationConfigApplicationContext();	
+		context.scan("net.wei.shoppingbackend");		
+		try{
+		context.refresh();		
+		
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		userDAO = (UserDAO) context.getBean("userDAO");
+	}
+
 	@Test
-	public void testAdd(){
+	public void testAdd() {
 		user = new User();
 		user.setFirstName("test");
 		user.setLastName("test");
@@ -35,9 +43,11 @@ public class UserTestCase {
 		user.setRole("USER");
 		user.setPassword("1111");
 		
-		assertEquals("Fail to add user", true, userDAO.addUser(user));
 		
-		//billing Address
+
+		assertEquals("Fail to add user", true, userDAO.addUser(user));
+
+		// billing Address
 		address = new Address();
 		address.setAddressLineOne("tet1");
 		address.setAddressLineTwo("tet2");
@@ -47,16 +57,18 @@ public class UserTestCase {
 		address.setZipCode("test");
 		address.setBilling(true);
 		address.setBilling(true);
-		
-		//link the user with the address
+
+		// link the user with the address
 		address.setUserId(user.getId());
-		assertEquals("Fail to add address to the user", true, userDAO.addAddress(address));
-		
-		if(user.getRole().equals("USER")){
+		assertEquals("Fail to add address to the user", true,
+				userDAO.addAddress(address));
+
+		if (user.getRole().equals("USER")) {
 			cart = new Cart();
 			cart.setUserId(user.getId());
-			assertEquals("Fail to add cart to the user", true, userDAO.addCart(cart));
-			
+			assertEquals("Fail to add cart to the user", true,
+					userDAO.addCart(cart));
+
 			address = new Address();
 			address.setAddressLineOne("tet1_Shipping");
 			address.setAddressLineTwo("tet2_Shipping");
@@ -66,14 +78,12 @@ public class UserTestCase {
 			address.setZipCode("test_Shipping");
 			address.setBilling(false);
 			address.setShipping(true);
-			
+
 			address.setUserId(user.getId());
-			
-			assertEquals("Fail to add address to the user", true, userDAO.addAddress(address));
+
+			assertEquals("Fail to add address to the user", true,
+					userDAO.addAddress(address));
 		}
-		
-		
-		
-		
+
 	}
 }
