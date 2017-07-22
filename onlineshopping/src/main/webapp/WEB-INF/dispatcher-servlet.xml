@@ -51,6 +51,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/mvc
    
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
    		<property name="flowRegistry" ref="flowRegistry"></property>
+   		<!-- webflow over request mapping -->
+   		<property name="order" value ="-1"></property>
    </bean>
    
    <bean id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
