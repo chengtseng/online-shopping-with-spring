@@ -3,17 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+    
+    <!-- model attribute for register flow, the user instance will stored in flow scope-->                      
+   	<var name="user" class="net.wei.shoppingbackend.dto.User"></var>
 	<!-- start : view path refer to view resolver -->
-	<view-state id="personal" view="flows/register/signup-personal"></view-state>
+	<!-- -->
+	<view-state id="personal" view="flows/register/signup-personal" model="user"></view-state> 
 
-	<view-state id="billing" view="flows/register/signup-billing"></view-state>
+	<!-- view-state id="billing" view="flows/register/signup-billing"-->
 
-	<view-state id="confirm" view="flows/register/signup-confirm"></view-state>
+	<!--view-state id="confirm" view="flows/register/signup-confirm"-->
 
 	<!-- end -->
-	<end-state id="home2" view="externalRedirect:http://google.com/"></end-state>
+	<end-state id="home2" view="externalRedirect:contextRelative:/"></end-state>
 
-	<end-state id="success" view="flows/register/signup-success"></end-state>
+	<!-- end-state id="success" view="flows/register/signup-success"></end-state-->
 
 
 	<!-- global transaction -->

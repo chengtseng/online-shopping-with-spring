@@ -1,5 +1,7 @@
 package net.wei.shoppingbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_detail")
-public class User {
+public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
