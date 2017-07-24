@@ -7,18 +7,30 @@
     <!-- model attribute for register flow, the user instance will stored in flow scope-->                      
    	<var name="user" class="net.wei.shoppingbackend.dto.User"></var>
    	<var name="address" class="net.wei.shoppingbackend.dto.Address"></var>
+	
+	<!--  -->
+	<on-start>
+		<evaluate expression="registerHandler.init()" result="flowScope.registerModel"></evaluate>	
+	</on-start>
+	
 	<!-- start : view path refer to view resolver -->
 	
 	<view-state id="registerEntry" view="flows/register/signup-personal" model="user">
 		<transition on="billing" to="billing2"></transition>
+		<on-exit >
+			<evaluate expression="registerHandler.addUser(flowScope.registerModel, user)"></evaluate>
+		</on-exit>
 	</view-state> 
 
 	<view-state id="billing2" view="flows/register/signup-billing" model="address">
 		<transition on="registerEntry" to="registerEntry"></transition>
 		<transition on="confirm" to="confirm"></transition>
+		<on-exit >
+			<evaluate expression="registerHandler.addAddress(flowScope.registerModel, address)"></evaluate>
+		</on-exit>
 	</view-state>
 
-	<view-state id="confirm" view="flows/register/signup-confirm">
+	<view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel">
 		<transition on="registerEntry" to="registerEntry"></transition>
 		<transition on="billing2" to="billing2"></transition>
 		<transition on="success" to="success"></transition>
