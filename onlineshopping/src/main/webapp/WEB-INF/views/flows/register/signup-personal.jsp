@@ -27,6 +27,7 @@
 									<!-- change input to sf:input, name attribute -> path(match model attributes' name) -->
 									<sf:input type="text" path="firstName" id="firstName"
 										placeholder="First Name" class="form-control" />
+										<sf:errors path="firstName" cssClass="help-block" element="em" />
 								</div>
 							</div>
 
@@ -37,6 +38,7 @@
 									<!-- change input to sf:input, name attribute -> path(match model attributes' name) -->
 									<sf:input type="text" path="lastName" id="lastName"
 										placeholder="Last Name" class="form-control" />
+									<sf:errors path="lastName" cssClass="help-block" element="em" />
 								</div>
 							</div>
 
@@ -46,6 +48,7 @@
 									<!-- change input to sf:input, name attribute -> path(match model attributes' name) -->
 									<sf:input type="text" path="email" id="email"
 										placeholder="email" class="form-control" />
+									<sf:errors path="email" cssClass="help-block" element="em" />
 								</div>
 							</div>
 							
@@ -54,6 +57,7 @@
 								<div class="col-md-8">
 									<sf:input type="text" id="phone" path="phone"
 										placeholder="phone" class="form-control" />
+									<sf:errors path="phone" cssClass="help-block" element="em" />
 								</div>
 							</div>
 
@@ -62,6 +66,7 @@
 								<div class="col-md-8">
 									<sf:input type="text" id="password" path="password"
 										placeholder="password" class="form-control" />
+									<sf:errors path="password" cssClass="help-block" element="em" />
 								</div>
 							</div>
 

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 
 
 @Entity
@@ -22,21 +24,26 @@ public class User implements Serializable {
 	private int id;
 	
 	@Column(name = "first_name")
+	@NotBlank(message="Please enter first name.")
 	private String firstName;	
 	
 	@Column(name = "last_name")
+	@NotBlank(message="Please enter last name.")
 	private String lastName;	
 	
 	@Column(name = "email")
+	@NotBlank(message="Please enter email address.")
 	private String email;
 	
 	@Column(name="phone")
+	@NotBlank(message="Please enter phone.")
 	private String phone;
 	
 	@Column(name="role")
 	private String role;
 	
 	@Column(name="password")
+	@NotBlank(message="Please enter password.")
 	private String password;
 	
 	@Column(name="enabled")

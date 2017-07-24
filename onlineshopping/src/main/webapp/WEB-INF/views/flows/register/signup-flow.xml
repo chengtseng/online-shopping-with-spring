@@ -33,8 +33,13 @@
 	<view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel">
 		<transition on="registerEntry" to="registerEntry"></transition>
 		<transition on="billing2" to="billing2"></transition>
-		<transition on="success" to="success"></transition>
+		<transition on="submit" to="submit"></transition>
 	</view-state>
+	
+	<action-state id="submit">
+		<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"></evaluate>
+		<transition on="success" to="success"></transition>	
+	</action-state>
 
 	<!-- end -->
 	<end-state id="home2" view="externalRedirect:contextRelative:/"></end-state>

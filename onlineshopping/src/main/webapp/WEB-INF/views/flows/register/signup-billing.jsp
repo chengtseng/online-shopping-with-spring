@@ -18,6 +18,7 @@
 								<label class="control-label col-md-4" for="addressLineOne">Address Line One</label>
 								<div class="col-md-8">
 									<sf:input id="addressLineOne" type="text" path="addressLineOne" class="form-control" placeholder="Enter Address Line One"></sf:input>
+									<sf:errors path="addressLineOne" cssClass="help-block" element="em" />
 								</div>							
 							</div>
 							<!-- address 2 -->
@@ -25,6 +26,7 @@
 								<label class="control-label col-md-4" for="addressLineTwo">Address Line Two</label>
 								<div class="col-md-8">
 									<sf:input id="addressLineTwo" type="text" path="addressLineTwo" class="form-control" placeholder="Enter Address Line Two"></sf:input>
+									<sf:errors path="addressLineTwo" cssClass="help-block" element="em" />
 								</div>							
 							</div>
 							<!-- city -->
@@ -32,6 +34,7 @@
 								<label class="control-label col-md-4" for="city">City</label>
 								<div class="col-md-8">
 									<sf:input id="city" type="text" path="city" class="form-control" placeholder="City"></sf:input>
+									<sf:errors path="city" cssClass="help-block" element="em" />
 								</div>							
 							</div>
 							
@@ -40,6 +43,7 @@
 								<label class="control-label col-md-4" for="state">State</label>
 								<div class="col-md-8">
 									<sf:input id="state" type="text" path="state" class="form-control" placeholder="State"></sf:input>
+									<sf:errors path="state" cssClass="help-block" element="em" />
 								</div>							
 							</div>
 							
@@ -48,6 +52,7 @@
 								<label class="control-label col-md-4" for="country">Country</label>
 								<div class="col-md-8">
 									<sf:input id="country" type="text" path="country" class="form-control" placeholder="Country"></sf:input>
+									<sf:errors path="country" cssClass="help-block" element="em" />
 								</div>							
 							</div>
 							
@@ -56,6 +61,7 @@
 								<label class="control-label col-md-4" for="zip">Zip code</label>
 								<div class="col-md-8">
 									<sf:input id="zip" type="text" path="zipCode" class="form-control" placeholder="Zip Code"></sf:input>
+									<sf:errors path="zipCode" cssClass="help-block" element="em" />
 								</div>							
 							</div>
 							
