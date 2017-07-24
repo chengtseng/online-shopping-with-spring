@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_detail")
+//Model in flow scope needs to be serializable
 public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
