@@ -6,15 +6,23 @@
     
     <!-- model attribute for register flow, the user instance will stored in flow scope-->                      
    	<var name="user" class="net.wei.shoppingbackend.dto.User"></var>
+   	<var name="address" class="net.wei.shoppingbackend.dto.Address"></var>
 	<!-- start : view path refer to view resolver -->
 	
 	<view-state id="registerEntry" view="flows/register/signup-personal" model="user">
 		<transition on="billing" to="billing2"></transition>
 	</view-state> 
 
-	<view-state id="billing2" view="flows/register/signup-billing"></view-state>
+	<view-state id="billing2" view="flows/register/signup-billing" model="address">
+		<transition on="registerEntry" to="registerEntry"></transition>
+		<transition on="confirm" to="confirm"></transition>
+	</view-state>
 
-	<view-state id="confirm" view="flows/register/signup-confirm"></view-state>
+	<view-state id="confirm" view="flows/register/signup-confirm">
+		<transition on="registerEntry" to="registerEntry"></transition>
+		<transition on="billing2" to="billing2"></transition>
+		<transition on="success" to="success"></transition>
+	</view-state>
 
 	<!-- end -->
 	<end-state id="home2" view="externalRedirect:contextRelative:/"></end-state>

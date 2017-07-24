@@ -1,5 +1,7 @@
 		<!-- Footer -->
+		
 		<%@include file="../../shared/footer.jsp"%>
+		
 
 		<!-- jQuery -->
 		<script src="${js}/jquery.js" type="text/javascript"></script>
