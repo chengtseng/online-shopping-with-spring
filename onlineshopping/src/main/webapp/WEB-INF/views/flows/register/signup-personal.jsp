@@ -69,6 +69,16 @@
 									<sf:errors path="password" cssClass="help-block" element="em" />
 								</div>
 							</div>
+							
+							
+							<div class="form-group">
+								<label class="control-label col-md-4" for="confirmPassword">Confirm Password</label>
+								<div class="col-md-8">
+									<sf:input type="text" id="confirmPassword" path="confirmPassword"
+										placeholder="Reenter your password" class="form-control" />
+									<sf:errors path="confirmPassword" cssClass="help-block" element="em" />
+								</div>
+							</div>
 
 						
 							<div class="form-group">

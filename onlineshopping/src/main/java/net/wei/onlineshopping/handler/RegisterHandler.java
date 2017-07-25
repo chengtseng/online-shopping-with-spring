@@ -7,6 +7,8 @@ import net.wei.shoppingbackend.dto.Cart;
 import net.wei.shoppingbackend.dto.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -45,6 +47,30 @@ public class RegisterHandler {
 		userDAO.addAddress(address);
 		
 		return transition;
+	}
+	
+	public String validateUser(User user, MessageContext mc){
+		String result = "success";
+		
+		if(!user.getPassword().equals(user.getConfirmPassword())){
+			result="failure";
+			mc.addMessage(new MessageBuilder()
+							.error()
+							.source("confirmPassword")
+							.defaultText("Naughty!! You enterned different passwords, try again.")
+							.build());			
+		}
+		
+		if(userDAO.getUserByEmail(user.getEmail())!= null){
+			result="failure";
+			mc.addMessage(new MessageBuilder()
+			.error()
+			.source("email")
+			.defaultText("The email existes in our database, do you want to log in instead?")
+			.build());
+		}
+		
+		return result;
 	}
 
 }

@@ -13,15 +13,15 @@
 		<evaluate expression="registerHandler.init()" result="flowScope.registerModel"></evaluate>	
 	</on-start>
 	
-	<!-- start : view path refer to view resolver -->
-	
+	<!-- start : view path refer to view resolver base path -->	
 	<view-state id="registerEntry" view="flows/register/signup-personal" model="user">
-		<transition on="billing" to="billing2"></transition>
+		<transition on="billing" to="validate_user"></transition>
 		<on-exit >
 			<evaluate expression="registerHandler.addUser(flowScope.registerModel, user)"></evaluate>
 		</on-exit>
 	</view-state> 
-
+	
+	<!-- after finish personal info goes to address set up -->
 	<view-state id="billing2" view="flows/register/signup-billing" model="address">
 		<transition on="registerEntry" to="registerEntry"></transition>
 		<transition on="confirm" to="confirm"></transition>
@@ -36,19 +36,26 @@
 		<transition on="submit" to="submit"></transition>
 	</view-state>
 	
+	<!-- customize validation -->
+	<action-state id="validate_user">
+		<evaluate expression="registerHandler.validateUser(user, messageContext)"></evaluate>
+		<transition on="success" to="billing2"></transition>
+		<transition on="failure" to="registerEntry"></transition>				
+	</action-state>
+	
 	<action-state id="submit">
+		<!-- use message context to store the error messages -->
 		<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"></evaluate>
 		<transition on="success" to="success"></transition>	
 	</action-state>
 
 	<!-- end -->
 	<end-state id="home2" view="externalRedirect:contextRelative:/"></end-state>
-
 	<end-state id="success" view="flows/register/signup-success"></end-state>
 
 
-	<!-- global transaction -->
+	<!-- global transaction : validate = false means validation happen after transition made only, remove personal info to home validation-->
 	<global-transitions>
-		<transition on="home1" to="home2"></transition>
+		<transition on="home1" to="home2" validate="false"></transition>
 	</global-transitions>
 </flow>

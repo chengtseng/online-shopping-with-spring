@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -48,6 +49,10 @@ public class User implements Serializable {
 	
 	@Column(name="enabled")
 	private boolean enabled = true;
+	
+	//Don't store it in db
+	@Transient
+	private String confirmPassword;
 	//---------------------------------------
 						//should be field name //cascade operations
 	@OneToOne(mappedBy="user", cascade=CascadeType.ALL)
@@ -117,6 +122,13 @@ public class User implements Serializable {
 				+ ", role=" + role + ", password=" + password + ", enabled="
 				+ enabled + "]";
 	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
 	
 
 	
