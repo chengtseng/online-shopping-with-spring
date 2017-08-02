@@ -69,7 +69,7 @@
 								<h4>Log In</h4>
 							</div>
 							<div class="panel-body">
-								<form id="loginForm" action="${contextRoot}/home" method="POST" class="form-horizontal">
+								<form id="loginForm" action="${contextRoot}/login" method="POST" class="form-horizontal">
 									
 									<div class="form-group">
 										<label for="username" class="col-md-4 control-label">Email: </label>
@@ -89,8 +89,8 @@
 									
 									<div class="form-group">
 										<div class="col-md-offset-4 col-md-8">
-											<input type="submit" value="Login" class="btn btn-primary" />
-											<!-- input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/-->
+											<input type="submit" value="Login" class="btn btn-primary" />											
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
 										</div>									
 									</div>
 								</form>

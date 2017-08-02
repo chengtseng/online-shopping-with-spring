@@ -16,11 +16,14 @@
 	
 	<http>
 		<!-- order of intercept mattered, all can see the log in page -->
-		<!-- intercept-url pattern="/logIn" access="permitAll" /-->
+		<intercept-url pattern="/login" access="permitAll" />
 		<!-- other resources only for user -->	
 		<intercept-url pattern="/**" access="hasAuthority('USER')" />
-		<form-login/>
-		<!-- form-login login-page="/logIn"/-->
+		
+		<form-login login-page="/login"/>
+		<!--  bean id="authenticationSuccessHandler" class="com.example.CustomSimpleURLAuthenticationSuccessHandler">
+    		<property name="defaultTargetUrl" value="/dashboard.htm"/>
+		<bean-->
 		
 		<!-- if want to disable csrf warning -->
 		<!-- csrf disabled="true"/-->
