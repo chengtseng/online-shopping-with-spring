@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd"
 		>
-		
+	<!-- we need hibernate which need to be initated before dispatcher servlet  -->	
 	<context:component-scan base-package="net.wei.shoppingbackend"/>
 	
 	<!-- no need to get any authentication for loading the static resources -->
@@ -16,10 +16,14 @@
 	
 	<http>
 		<!-- order of intercept mattered, all can see the log in page -->
-		<intercept-url pattern="/logIn" access="permitAll" />	
+		<!-- intercept-url pattern="/logIn" access="permitAll" /-->
+		<!-- other resources only for user -->	
 		<intercept-url pattern="/**" access="hasAuthority('USER')" />
+		<form-login/>
+		<!-- form-login login-page="/logIn"/-->
 		
-		<form-login login-page="/logIn"/>
+		<!-- if want to disable csrf warning -->
+		<!-- csrf disabled="true"/-->
 		<logout />
 	</http>
 
