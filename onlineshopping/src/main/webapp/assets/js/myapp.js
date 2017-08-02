@@ -239,7 +239,7 @@ $(function(){
 		});		
 	}
 //----------------------------------------------------------
-	//validate
+	//validate for login form
 	var $categoryForm = $('#categoryForm');
 	if($categoryForm.length){
 		$categoryForm.validate({
@@ -274,7 +274,42 @@ $(function(){
 		}			
 		});
 	}
-	
+		
+	//validate
+	var $loginForm = $('#loginForm');
+	if($loginForm.length){
+		$loginForm.validate({
+			rules:{
+				username:{
+					required: true,
+					email: true
+				},
+				
+				password:{
+					required: true					
+				}
+			},
+		
+		messages:{
+			
+			username:{
+				required :'Must provide your email as the user name.',
+				email: 'Please enter valid email address.'
+			},
+			password:{
+				required :'Must have have your password.'		
+			}
+		},
+		
+		errorElement : 'em',
+		errorPlacement : function(error, element){
+			//add the class of help-block
+			error.addClass('help-block');
+			//add error message after input field
+			error.insertAfter(element);
+		}			
+		});
+	}
 	
 //----------------------------------------------------------	
 	

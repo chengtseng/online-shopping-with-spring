@@ -63,7 +63,7 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!--  -->
+		<!-- Spring Security/Authentication/Authorization -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>

@@ -23,7 +23,7 @@ public class HibernatgeConfig {
 	private final static String DATABASE_USERNAME = "root";
 	private final static String DATABASE_PASSWORD = "192847";
 	
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource(){
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(DATABASE_DRIVER);

@@ -16,8 +16,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/mvc
                     http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
    
    <context:component-scan base-package="net.wei.onlineshopping"/>
-  <!-- scan for bean in the back end -->
-   <context:component-scan base-package="net.wei.shoppingbackend"/>
+  <!-- scan for bean in the back end in spring-security.xml before dispatcher servlet initiated for data source bean  -->
+
    
    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">   		
    		<property name="prefix" value="/WEB-INF/views/"/>
@@ -61,8 +61,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/mvc
    		<property name="viewResolvers" ref="viewResolver"/>
    </bean>
    
-   <!-- validator bean -->
-   <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"></bean>
-   
+   <!-- validator bean for validation in flow -->
+   <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"></bean>  
    
 </beans>
