@@ -297,7 +297,7 @@ $(function(){
 				email: 'Please enter valid email address.'
 			},
 			password:{
-				required :'Must have have your password.'		
+				required :'Must have have your password. '		
 			}
 		},
 		
