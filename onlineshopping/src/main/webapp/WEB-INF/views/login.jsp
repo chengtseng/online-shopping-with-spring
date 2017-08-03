@@ -58,10 +58,22 @@
 					<a class=navbar-brand href="${contextRoot}/home">Home</a>
 				</div>			
 			</div>		
-		</nav>
+		</nav>	
 
 		<div class="content">
 			<div class = container>
+			
+				<!-- authentication error -->
+				<c:if test="${not empty message}">
+				
+					<div class="row">
+						<div class="col-md-offset-3 col-md-6">
+							<div class="alert alert-danger">${message}</div>
+						</div>
+					</div>		
+		
+				</c:if>
+			
 				<div class="row">
 					<div class="col-md-offset-3 col-md-6">
 						<div class="panel panel-primary">

@@ -19,6 +19,18 @@ $(function(){
 			break;
 	}
 	
+	var csrf_token = $('meta[name="_csrf"]').attr('content');
+	var csrf_header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if(csrf_token.length > 0 && csrf_header.length > 0){
+		
+		//set
+		$(document).ajaxSend(function(e,xhr,options){
+			xhr.setRequestHeader(csrf_header, csrf_token);			
+		});
+	}
+	
+	
 //code for jquery data table
 	var $table = $('#productListTable');
 	//alert(window.contextRoot);

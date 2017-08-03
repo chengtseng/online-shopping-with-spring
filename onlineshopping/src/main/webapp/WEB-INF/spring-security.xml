@@ -15,18 +15,25 @@
 	<http pattern="/resources/**" security="none"/>		
 	
 	<http>
-		<!-- order of intercept mattered, all can see the log in page -->
-		<intercept-url pattern="/login" access="permitAll" />
-		<!-- other resources only for user -->	
-		<intercept-url pattern="/**" access="hasAuthority('USER')" />
 		
-		<form-login login-page="/login"/>
+		<intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" />
+		<!-- order of intercept mattered, all can see the log in page -->
+		<intercept-url pattern="/cart/**" access="hasAuthority('USER')" />
+		<!-- other resources only for user -->	
+		<intercept-url pattern="/**" access="permitAll" />	
+		
+		
+			
 		<!--  bean id="authenticationSuccessHandler" class="com.example.CustomSimpleURLAuthenticationSuccessHandler">
     		<property name="defaultTargetUrl" value="/dashboard.htm"/>
 		<bean-->
 		
+		<access-denied-handler error-page="/access-denied"/>
+		
 		<!-- if want to disable csrf warning -->
 		<!-- csrf disabled="true"/-->
+		
+		<form-login login-page="/login"/>
 		<logout />
 	</http>
 
