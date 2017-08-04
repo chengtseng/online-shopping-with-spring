@@ -8,7 +8,7 @@
    	<var name="user" class="net.wei.shoppingbackend.dto.User"></var>
    	<var name="address" class="net.wei.shoppingbackend.dto.Address"></var>
 	
-	<!--  -->
+	<!-- when start, get a RegisterModel by calling registerHandler.init(), add it to flowScope object -->
 	<on-start>
 		<evaluate expression="registerHandler.init()" result="flowScope.registerModel"></evaluate>	
 	</on-start>
