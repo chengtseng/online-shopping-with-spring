@@ -84,6 +84,10 @@
 				<%@include file="./manageProducts.jsp"%>
 			</c:if>
 			
+			<c:if test="${userClickedShowCart == true}">
+				<%@include file="./cart.jsp"%>
+			</c:if>
+			
 		</div>
 
 
