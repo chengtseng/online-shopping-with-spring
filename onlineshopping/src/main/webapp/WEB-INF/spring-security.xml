@@ -34,8 +34,7 @@
 		<!-- if want to disable csrf warning -->
 		<!-- csrf disabled="true"/-->
 		
-		<form-login login-page="/login"/>
-		<logout />
+		<form-login login-page="/login"/>		
 	</http>
 
 	<authentication-manager>
